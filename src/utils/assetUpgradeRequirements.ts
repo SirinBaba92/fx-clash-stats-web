@@ -7,27 +7,23 @@ export interface AssetUpgradeRequirements {
   remainingCards: number;
 }
 
-const assetUpgradeRequirements = (
-  assetStats: BaseStat[],
-  level: number,
-  cards: number,
-): AssetUpgradeRequirements => {
-  const nextUpgrade = assetStats.find((stat) => stat.level === level + 1)?.upgrade;
+const assetUpgradeRequirements = (assetStats: BaseStat[], level: number, cards: number): AssetUpgradeRequirements => {
+  const nextStat = assetStats.find((stat) => stat.level === level + 1);
 
-  if (!nextUpgrade) {
+  if (!nextStat || cards < nextStat.upgrade.cards) {
     return {
-      cardsNeeded: 0,
-      coinsNeeded: 0,
+      cardsNeeded: nextStat?.upgrade.cards ?? 0,
+      coinsNeeded: nextStat?.upgrade.coins ?? 0,
       maxLevelAvailable: level,
       remainingCards: cards,
     };
   }
 
   return {
-    cardsNeeded: nextUpgrade.cards,
-    coinsNeeded: nextUpgrade.coins,
+    cardsNeeded: nextStat.upgrade.cards,
+    coinsNeeded: nextStat.upgrade.coins,
     maxLevelAvailable: level + 1,
-    remainingCards: cards - nextUpgrade.cards,
+    remainingCards: cards - nextStat.upgrade.cards,
   };
 };
 

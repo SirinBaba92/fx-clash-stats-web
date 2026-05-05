@@ -831,7 +831,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 10,
-    name: 'Logan Sargeant',
+    name: 'Arvid Lindblad',
     rarity: 'epic',
     series: 2,
     stats: [
@@ -2303,7 +2303,7 @@ const DRIVERS: Driver[] = [
   },
     {
     id: 26,
-    name: 'Logan Sargeant',
+    name: 'Arvid Lindblad',
     rarity: 'rare',
     series: 6,
     stats: [

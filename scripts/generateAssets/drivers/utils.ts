@@ -108,10 +108,19 @@ const LEGENDARY_TIER_BY_DRIVER_NAME: Record<string, number> = {
   'Ayrton Senna': 3,
 };
 
-const calculateDriverUpgrade = (driver: Driver, stat: Stat): Upgrade => ({
-  cards: CARDS_NEEDED[stat.level - 1],
-  coins: RARITY_COINS_COST[driver.rarity][driver.series - 1][stat.level - 1],
-});
+const calculateDriverUpgrade = (driver: Driver, stat: Stat): Upgrade => {
+  const legendaryTier = LEGENDARY_TIER_BY_DRIVER_NAME[driver.name];
+
+  const coins =
+    driver.rarity === 'legendary'
+      ? RARITY_COINS_COST.legendary[legendaryTier][stat.level - 1]
+      : RARITY_COINS_COST[driver.rarity][driver.series - 1][stat.level - 1];
+
+  return {
+    cards: CARDS_NEEDED[stat.level - 1],
+    coins,
+  };
+};
 
 const calculateStatsSum = (stat: Stat): number =>
   stat.defending + stat.overtaking + stat.qualifying + stat.raceStart + stat.tireManagement;

@@ -28,6 +28,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Generate assets
+        run: pnpm generate-assets
+
       - name: Build
         run: pnpm build
 

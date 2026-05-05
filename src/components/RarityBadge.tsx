@@ -20,7 +20,14 @@ const RarityBadge = (props: Props) => {
   const { t } = useTranslation();
 
   return (
-    <span className={twMerge('text-xs font-medium mr-2 px-2.5 py-0.5 rounded', badgeColor[rarity])}>{t(rarity)}</span>
+    <span
+      className={twMerge(
+        'text-xs font-medium mr-2 px-2.5 py-0.5 rounded',
+        badgeColor[rarity]
+      )}
+    >
+      {t(rarity as any)}
+    </span>
   );
 };
 

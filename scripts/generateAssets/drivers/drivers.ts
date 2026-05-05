@@ -103,7 +103,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 2,
-    name: 'Kevin Magnussen',
+    name: 'Franco Colapinto',
     rarity: 'common',
     series: 1,
     stats: [
@@ -199,7 +199,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 3,
-    name: 'Zhou Guanyu',
+    name: 'Valtteri Bottas',
     rarity: 'common',
     series: 1,
     stats: [
@@ -295,7 +295,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 4,
-    name: 'Valtteri Bottas',
+    name: 'Gabriel Bortoleto',
     rarity: 'rare',
     series: 1,
     stats: [
@@ -375,7 +375,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 5,
-    name: 'Nico Hulkenberg',
+    name: 'Pierre Gasly',
     rarity: 'epic',
     series: 1,
     stats: [
@@ -447,7 +447,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 6,
-    name: 'Valtteri Bottas',
+    name: 'Gabriel Bortoleto',
     rarity: 'common',
     series: 2,
     stats: [
@@ -543,7 +543,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 7,
-    name: 'Nico Hulkenberg',
+    name: 'Pierre Gasly',
     rarity: 'common',
     series: 2,
     stats: [
@@ -639,7 +639,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 8,
-    name: 'Daniel Ricciardo',
+    name: 'Lance Stroll',
     rarity: 'common',
     series: 2,
     stats: [
@@ -735,7 +735,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 9,
-    name: 'Yuki Tsunoda',
+    name: 'Esteban Ocon',
     rarity: 'common',
     series: 2,
     stats: [
@@ -831,8 +831,8 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 10,
-    name: 'Arvid Lindblad',
-    rarity: 'epic',
+    name: 'Valtteri Bottas',
+    rarity: 'rare',
     series: 2,
     stats: [
       {
@@ -903,7 +903,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 11,
-    name: 'Pierre Gasly',
+    name: 'Liam Lawson',
     rarity: 'common',
     series: 3,
     stats: [
@@ -999,7 +999,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 12,
-    name: 'Esteban Ocon',
+    name: 'Oliver Bearman',
     rarity: 'common',
     series: 3,
     stats: [
@@ -1095,7 +1095,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 13,
-    name: 'Lance Stroll',
+    name: 'Isack Hadjar',
     rarity: 'common',
     series: 3,
     stats: [

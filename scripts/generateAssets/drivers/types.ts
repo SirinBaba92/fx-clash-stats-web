@@ -23,7 +23,7 @@ export interface Stat {
 export interface Driver {
   id: number;
   name: string;
-  rarity: 'common' | 'rare' | 'epic';
+  rarity: 'common' | 'rare' | 'epic' | 'legendary';  
   series: number;
   stats: Stat[];
 }

@@ -1191,7 +1191,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 14,
-    name: 'Alex Albon',
+    name: 'Nico Hülkenberg',
     rarity: 'common',
     series: 3,
     stats: [
@@ -1287,8 +1287,8 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 15,
-    name: 'Kevin Magnussen',
-    rarity: 'rare',
+    name: 'Arvid Lindblad',
+    rarity: 'epic',
     series: 3,
     stats: [
       {
@@ -1367,7 +1367,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 16,
-    name: 'Oscar Piastri',
+    name: 'Fernando Alonso',
     rarity: 'common',
     series: 4,
     stats: [
@@ -1463,7 +1463,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 17,
-    name: 'George Russell',
+    name: 'Carlos Sainz',
     rarity: 'common',
     series: 4,
     stats: [
@@ -1559,7 +1559,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 18,
-    name: 'Carlos Sainz',
+    name: 'Alex Albon',
     rarity: 'common',
     series: 4,
     stats: [
@@ -1655,7 +1655,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 19,
-    name: 'Sergio Perez',
+    name: 'Andrea Kimi Antonelli',
     rarity: 'common',
     series: 4,
     stats: [
@@ -1751,8 +1751,8 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 20,
-    name: 'Kevin Magnussen',
-    rarity: 'epic',
+    name: 'Sergio Perez',
+    rarity: 'common',
     series: 4,
     stats: [
       {
@@ -1823,9 +1823,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 21,
-    name: 'Lando Norris',
-    rarity: 'common',
-    series: 5,
+    name: 'Valtteri Bottas',
+    rarity: 'epic',
+    series: 4,
     stats: [
       {
         level: 1,
@@ -1919,7 +1919,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 22,
-    name: 'Fernando Alonso',
+    name: 'Lewis Hamilton',
     rarity: 'common',
     series: 5,
     stats: [
@@ -2015,7 +2015,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 23,
-    name: 'Lewis Hamilton',
+    name: 'Charles Leclerc',
     rarity: 'common',
     series: 5,
     stats: [
@@ -2111,7 +2111,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 24,
-    name: 'Charles Leclerc',
+    name: 'George Russell',
     rarity: 'common',
     series: 5,
     stats: [
@@ -2207,7 +2207,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 25,
-    name: 'Max Verstappen',
+    name: 'Oscar Piastri',
     rarity: 'common',
     series: 5,
     stats: [
@@ -2303,9 +2303,9 @@ const DRIVERS: Driver[] = [
   },
     {
     id: 26,
-    name: 'Arvid Lindblad',
-    rarity: 'rare',
-    series: 6,
+    name: 'Max Verstappen',
+    rarity: 'common',
+    series: 5,
     stats: [
       {
         level: 1,
@@ -2383,9 +2383,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 27,
-    name: 'Nico Hulkenberg',
+    name: 'Franco Colapinto',
     rarity: 'rare',
-    series: 6,
+    series: 5,
     stats: [
       {
         level: 1,
@@ -2463,8 +2463,8 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 28,
-    name: 'Daniel Ricciardo',
-    rarity: 'rare',
+    name: 'Lando Norris',
+    rarity: 'common',
     series: 6,
     stats: [
       {
@@ -2543,7 +2543,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 29,
-    name: 'Zhou Guanyu',
+    name: 'Arvid Lindblad',
     rarity: 'rare',
     series: 6,
     stats: [
@@ -2623,8 +2623,8 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 30,
-    name: 'Zhou Guanyu',
-    rarity: 'epic',
+    name: 'Pierre Gasly',
+    rarity: 'rare',
     series: 6,
     stats: [
       {
@@ -2695,9 +2695,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 31,
-    name: 'Yuki Tsunoda',
+    name: 'Lance Stroll',
     rarity: 'rare',
-    series: 7,
+    series: 6,
     stats: [
       {
         level: 1,
@@ -2775,9 +2775,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 32,
-    name: 'Pierre Gasly',
-    rarity: 'rare',
-    series: 7,
+    name: 'Franco Colapinto',
+    rarity: 'epic',
+    series: 6,
     stats: [
       {
         level: 1,
@@ -2935,7 +2935,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 34,
-    name: 'Lance Stroll',
+    name: 'Liam Lawson',
     rarity: 'rare',
     series: 7,
     stats: [
@@ -3015,7 +3015,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 35,
-    name: 'Alex Albon',
+    name: 'Oliver Bearman',
     rarity: 'rare',
     series: 7,
     stats: [
@@ -3095,9 +3095,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 36,
-    name: 'Oscar Piastri',
+    name: 'Isack Hadjar',
     rarity: 'rare',
-    series: 8,
+    series: 7,
     stats: [
       {
         level: 1,
@@ -3175,9 +3175,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 37,
-    name: 'George Russell',
+    name: 'Nico Hülkenberg',
     rarity: 'rare',
-    series: 8,
+    series: 7,
     stats: [
       {
         level: 1,
@@ -3255,7 +3255,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 38,
-    name: 'Carlos Sainz',
+    name: 'Fernando Alonso',
     rarity: 'rare',
     series: 8,
     stats: [
@@ -3335,7 +3335,7 @@ const DRIVERS: Driver[] = [
   },
   {
   id: 39,
-    name: 'Sergio Perez',
+    name: 'Carlos Sainz',
     rarity: 'rare',
     series: 8,
     stats: [
@@ -3415,8 +3415,8 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 40,
-    name: 'Valtteri Bottas',
-    rarity: 'epic',
+    name: 'Alex Albon',
+    rarity: 'rare',
     series: 8,
     stats: [
       {
@@ -3487,9 +3487,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 41,
-    name: 'Lando Norris',
+    name: 'Andrea Kimi Antonelli',
     rarity: 'rare',
-    series: 9,
+    series: 8,
     stats: [
       {
         level: 1,
@@ -3567,9 +3567,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 42,
-    name: 'Fernando Alonso',
+    name: 'Sergio Perez',
     rarity: 'rare',
-    series: 9,
+    series: 8,
     stats: [
       {
         level: 1,
@@ -3647,9 +3647,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 43,
-    name: 'Lewis Hamilton',
-    rarity: 'rare',
-    series: 9,
+    name: 'Liam Lawson',
+    rarity: 'epic',
+    series: 8,
     stats: [
       {
         level: 1,
@@ -3727,7 +3727,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 44,
-    name: 'Charles Leclerc',
+    name: 'Lewis Hamilton',
     rarity: 'rare',
     series: 9,
     stats: [
@@ -3807,7 +3807,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 45,
-    name: 'Max Verstappen',
+    name: 'Charles Leclerc',
     rarity: 'rare',
     series: 9,
     stats: [
@@ -3887,9 +3887,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 46,
-    name: 'Daniel Ricciardo',
-    rarity: 'epic',
-    series: 10,
+    name: 'George Russell',
+    rarity: 'rare',
+    series: 9,
     stats: [
       {
         level: 1,
@@ -3959,9 +3959,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 47,
-    name: 'Yuki Tsunoda',
-    rarity: 'epic',
-    series: 10,
+    name: 'Oscar Piastri',
+    rarity: 'rare',
+    series: 9,
     stats: [
       {
         level: 1,
@@ -4031,9 +4031,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 48,
-    name: 'Pierre Gasly',
-    rarity: 'epic',
-    series: 10,
+    name: 'Max Verstappen',
+    rarity: 'rare',
+    series: 9,
     stats: [
       {
         level: 1,
@@ -4103,9 +4103,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 49,
-    name: 'Esteban Ocon',
-    rarity: 'epic',
-    series: 10,
+    name: 'Lando Norris',
+    rarity: 'rare',
+    series: 9,
     stats: [
       {
         level: 1,
@@ -4175,7 +4175,7 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 50,
-    name: 'Lance Stroll',
+    name: 'Gabriel Bortoleto',
     rarity: 'epic',
     series: 10,
     stats: [
@@ -4247,9 +4247,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 51,
-    name: 'Alex Albon',
+    name: 'Lance Stroll',
     rarity: 'epic',
-    series: 11,
+    series: 10,
     stats: [
       {
         level: 1,
@@ -4319,9 +4319,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 52,
-    name: 'Oscar Piastri',
+    name: 'Esteban Ocon',
     rarity: 'epic',
-    series: 11,
+    series: 10,
     stats: [
       {
         level: 1,
@@ -4391,9 +4391,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 53,
-    name: 'George Russell',
+    name: 'Nico Hülkenberg',
     rarity: 'epic',
-    series: 11,
+    series: 10,
     stats: [
       {
         level: 1,
@@ -4463,9 +4463,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 54,
-    name: 'Carlos Sainz',
+    name: 'Alex Albon',
     rarity: 'epic',
-    series: 11,
+    series: 10,
     stats: [
       {
         level: 1,
@@ -4537,7 +4537,7 @@ const DRIVERS: Driver[] = [
     id: 55,
     name: 'Sergio Perez',
     rarity: 'epic',
-    series: 11,
+    series: 10,
     stats: [
       {
         level: 1,
@@ -4607,9 +4607,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 56,
-    name: 'Lando Norris',
+    name: 'Oliver Bearman',
     rarity: 'epic',
-    series: 12,
+    series: 11,
     stats: [
       {
         level: 1,
@@ -4679,9 +4679,9 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 57,
-    name: 'Fernando Alonso',
+    name: 'Isack Hadjar',
     rarity: 'epic',
-    series: 12,
+    series: 11,
     stats: [
       {
         level: 1,
@@ -4751,6 +4751,222 @@ const DRIVERS: Driver[] = [
   },
   {
     id: 58,
+    name: 'Fernando Alonso',
+    rarity: 'epic',
+    series: 11,
+    stats: [
+      {
+        level: 1,
+        overtaking: 62,
+        defending: 57,
+        qualifying: 52,
+        raceStart: 72,
+        tireManagement: 67,
+      },
+      {
+        level: 2,
+        overtaking: 66,
+        defending: 61,
+        qualifying: 56,
+        raceStart: 76,
+        tireManagement: 71,
+      },
+      {
+        level: 3,
+        overtaking: 70,
+        defending: 65,
+        qualifying: 60,
+        raceStart: 80,
+        tireManagement: 75,
+      },
+      {
+        level: 4,
+        overtaking: 74,
+        defending: 69,
+        qualifying: 64,
+        raceStart: 84,
+        tireManagement: 79,
+      },
+      {
+        level: 5,
+        overtaking: 78,
+        defending: 73,
+        qualifying: 68,
+        raceStart: 88,
+        tireManagement: 83,
+      },
+      {
+        level: 6,
+        overtaking: 81,
+        defending: 76,
+        qualifying: 71,
+        raceStart: 91,
+        tireManagement: 86,
+      },
+      {
+        level: 7,
+        overtaking: 85,
+        defending: 80,
+        qualifying: 75,
+        raceStart: 95,
+        tireManagement: 90,
+      },
+      {
+        level: 8,
+        overtaking: 89,
+        defending: 84,
+        qualifying: 79,
+        raceStart: 99,
+        tireManagement: 94,
+      },
+    ],
+  },
+  {
+    id: 59,
+    name: 'Carlos Sainz',
+    rarity: 'epic',
+    series: 11,
+    stats: [
+      {
+        level: 1,
+        overtaking: 52,
+        defending: 72,
+        qualifying: 67,
+        raceStart: 62,
+        tireManagement: 57,
+      },
+      {
+        level: 2,
+        overtaking: 56,
+        defending: 76,
+        qualifying: 71,
+        raceStart: 66,
+        tireManagement: 61,
+      },
+      {
+        level: 3,
+        overtaking: 60,
+        defending: 80,
+        qualifying: 75,
+        raceStart: 70,
+        tireManagement: 65,
+      },
+      {
+        level: 4,
+        overtaking: 64,
+        defending: 84,
+        qualifying: 79,
+        raceStart: 74,
+        tireManagement: 69,
+      },
+      {
+        level: 5,
+        overtaking: 68,
+        defending: 88,
+        qualifying: 83,
+        raceStart: 78,
+        tireManagement: 73,
+      },
+      {
+        level: 6,
+        overtaking: 71,
+        defending: 91,
+        qualifying: 86,
+        raceStart: 81,
+        tireManagement: 76,
+      },
+      {
+        level: 7,
+        overtaking: 75,
+        defending: 95,
+        qualifying: 90,
+        raceStart: 85,
+        tireManagement: 80,
+      },
+      {
+        level: 8,
+        overtaking: 79,
+        defending: 99,
+        qualifying: 94,
+        raceStart: 89,
+        tireManagement: 84,
+      },
+    ],
+  },
+  {
+    id: 60,
+    name: 'Andrea Kimi Antonelli',
+    rarity: 'epic',
+    series: 11,
+    stats: [
+      {
+        level: 1,
+        overtaking: 72,
+        defending: 57,
+        qualifying: 67,
+        raceStart: 52,
+        tireManagement: 62,
+      },
+      {
+        level: 2,
+        overtaking: 76,
+        defending: 61,
+        qualifying: 71,
+        raceStart: 56,
+        tireManagement: 66,
+      },
+      {
+        level: 3,
+        overtaking: 80,
+        defending: 65,
+        qualifying: 75,
+        raceStart: 60,
+        tireManagement: 70,
+      },
+      {
+        level: 4,
+        overtaking: 84,
+        defending: 69,
+        qualifying: 79,
+        raceStart: 64,
+        tireManagement: 74,
+      },
+      {
+        level: 5,
+        overtaking: 88,
+        defending: 73,
+        qualifying: 83,
+        raceStart: 68,
+        tireManagement: 78,
+      },
+      {
+        level: 6,
+        overtaking: 91,
+        defending: 76,
+        qualifying: 86,
+        raceStart: 71,
+        tireManagement: 81,
+      },
+      {
+        level: 7,
+        overtaking: 95,
+        defending: 80,
+        qualifying: 90,
+        raceStart: 75,
+        tireManagement: 85,
+      },
+      {
+        level: 8,
+        overtaking: 99,
+        defending: 84,
+        qualifying: 94,
+        raceStart: 79,
+        tireManagement: 89,
+      },
+    ],
+  },
+    {
+    id: 61,
     name: 'Lewis Hamilton',
     rarity: 'epic',
     series: 12,
@@ -4821,147 +5037,363 @@ const DRIVERS: Driver[] = [
       },
     ],
   },
-  {
-    id: 59,
+    {
+    id: 62,
     name: 'Charles Leclerc',
     rarity: 'epic',
     series: 12,
     stats: [
       {
         level: 1,
-        overtaking: 52,
-        defending: 72,
-        qualifying: 67,
-        raceStart: 62,
-        tireManagement: 57,
+        overtaking: 62,
+        defending: 57,
+        qualifying: 52,
+        raceStart: 72,
+        tireManagement: 67,
       },
       {
         level: 2,
-        overtaking: 56,
-        defending: 76,
-        qualifying: 71,
-        raceStart: 66,
-        tireManagement: 61,
+        overtaking: 66,
+        defending: 61,
+        qualifying: 56,
+        raceStart: 76,
+        tireManagement: 71,
       },
       {
         level: 3,
-        overtaking: 60,
-        defending: 80,
-        qualifying: 75,
-        raceStart: 70,
-        tireManagement: 65,
+        overtaking: 70,
+        defending: 65,
+        qualifying: 60,
+        raceStart: 80,
+        tireManagement: 75,
       },
       {
         level: 4,
-        overtaking: 64,
-        defending: 84,
-        qualifying: 79,
-        raceStart: 74,
-        tireManagement: 69,
+        overtaking: 74,
+        defending: 69,
+        qualifying: 64,
+        raceStart: 84,
+        tireManagement: 79,
       },
       {
         level: 5,
-        overtaking: 68,
-        defending: 88,
-        qualifying: 83,
-        raceStart: 78,
-        tireManagement: 73,
+        overtaking: 78,
+        defending: 73,
+        qualifying: 68,
+        raceStart: 88,
+        tireManagement: 83,
       },
       {
         level: 6,
-        overtaking: 71,
-        defending: 91,
-        qualifying: 86,
-        raceStart: 81,
-        tireManagement: 76,
+        overtaking: 81,
+        defending: 76,
+        qualifying: 71,
+        raceStart: 91,
+        tireManagement: 86,
       },
       {
         level: 7,
-        overtaking: 75,
-        defending: 95,
-        qualifying: 90,
-        raceStart: 85,
-        tireManagement: 80,
+        overtaking: 85,
+        defending: 80,
+        qualifying: 75,
+        raceStart: 95,
+        tireManagement: 90,
       },
       {
         level: 8,
-        overtaking: 79,
-        defending: 99,
-        qualifying: 94,
-        raceStart: 89,
-        tireManagement: 84,
+        overtaking: 89,
+        defending: 84,
+        qualifying: 79,
+        raceStart: 99,
+        tireManagement: 94,
       },
     ],
   },
-  {
-    id: 60,
+    {
+    id: 63,
+    name: 'George Russell',
+    rarity: 'epic',
+    series: 12,
+    stats: [
+      {
+        level: 1,
+        overtaking: 62,
+        defending: 57,
+        qualifying: 52,
+        raceStart: 72,
+        tireManagement: 67,
+      },
+      {
+        level: 2,
+        overtaking: 66,
+        defending: 61,
+        qualifying: 56,
+        raceStart: 76,
+        tireManagement: 71,
+      },
+      {
+        level: 3,
+        overtaking: 70,
+        defending: 65,
+        qualifying: 60,
+        raceStart: 80,
+        tireManagement: 75,
+      },
+      {
+        level: 4,
+        overtaking: 74,
+        defending: 69,
+        qualifying: 64,
+        raceStart: 84,
+        tireManagement: 79,
+      },
+      {
+        level: 5,
+        overtaking: 78,
+        defending: 73,
+        qualifying: 68,
+        raceStart: 88,
+        tireManagement: 83,
+      },
+      {
+        level: 6,
+        overtaking: 81,
+        defending: 76,
+        qualifying: 71,
+        raceStart: 91,
+        tireManagement: 86,
+      },
+      {
+        level: 7,
+        overtaking: 85,
+        defending: 80,
+        qualifying: 75,
+        raceStart: 95,
+        tireManagement: 90,
+      },
+      {
+        level: 8,
+        overtaking: 89,
+        defending: 84,
+        qualifying: 79,
+        raceStart: 99,
+        tireManagement: 94,
+      },
+    ],
+  },
+    {
+    id: 64,
+    name: 'Oscar Piastri',
+    rarity: 'epic',
+    series: 12,
+    stats: [
+      {
+        level: 1,
+        overtaking: 62,
+        defending: 57,
+        qualifying: 52,
+        raceStart: 72,
+        tireManagement: 67,
+      },
+      {
+        level: 2,
+        overtaking: 66,
+        defending: 61,
+        qualifying: 56,
+        raceStart: 76,
+        tireManagement: 71,
+      },
+      {
+        level: 3,
+        overtaking: 70,
+        defending: 65,
+        qualifying: 60,
+        raceStart: 80,
+        tireManagement: 75,
+      },
+      {
+        level: 4,
+        overtaking: 74,
+        defending: 69,
+        qualifying: 64,
+        raceStart: 84,
+        tireManagement: 79,
+      },
+      {
+        level: 5,
+        overtaking: 78,
+        defending: 73,
+        qualifying: 68,
+        raceStart: 88,
+        tireManagement: 83,
+      },
+      {
+        level: 6,
+        overtaking: 81,
+        defending: 76,
+        qualifying: 71,
+        raceStart: 91,
+        tireManagement: 86,
+      },
+      {
+        level: 7,
+        overtaking: 85,
+        defending: 80,
+        qualifying: 75,
+        raceStart: 95,
+        tireManagement: 90,
+      },
+      {
+        level: 8,
+        overtaking: 89,
+        defending: 84,
+        qualifying: 79,
+        raceStart: 99,
+        tireManagement: 94,
+      },
+    ],
+  },
+    {
+    id: 65,
     name: 'Max Verstappen',
     rarity: 'epic',
     series: 12,
     stats: [
       {
         level: 1,
-        overtaking: 72,
+        overtaking: 62,
         defending: 57,
-        qualifying: 67,
-        raceStart: 52,
-        tireManagement: 62,
+        qualifying: 52,
+        raceStart: 72,
+        tireManagement: 67,
       },
       {
         level: 2,
-        overtaking: 76,
+        overtaking: 66,
         defending: 61,
-        qualifying: 71,
-        raceStart: 56,
-        tireManagement: 66,
+        qualifying: 56,
+        raceStart: 76,
+        tireManagement: 71,
       },
       {
         level: 3,
-        overtaking: 80,
+        overtaking: 70,
         defending: 65,
-        qualifying: 75,
-        raceStart: 60,
-        tireManagement: 70,
+        qualifying: 60,
+        raceStart: 80,
+        tireManagement: 75,
       },
       {
         level: 4,
-        overtaking: 84,
+        overtaking: 74,
         defending: 69,
-        qualifying: 79,
-        raceStart: 64,
-        tireManagement: 74,
+        qualifying: 64,
+        raceStart: 84,
+        tireManagement: 79,
       },
       {
         level: 5,
-        overtaking: 88,
+        overtaking: 78,
         defending: 73,
-        qualifying: 83,
-        raceStart: 68,
-        tireManagement: 78,
+        qualifying: 68,
+        raceStart: 88,
+        tireManagement: 83,
       },
       {
         level: 6,
-        overtaking: 91,
+        overtaking: 81,
         defending: 76,
-        qualifying: 86,
-        raceStart: 71,
-        tireManagement: 81,
+        qualifying: 71,
+        raceStart: 91,
+        tireManagement: 86,
       },
       {
         level: 7,
-        overtaking: 95,
+        overtaking: 85,
         defending: 80,
-        qualifying: 90,
-        raceStart: 75,
-        tireManagement: 85,
+        qualifying: 75,
+        raceStart: 95,
+        tireManagement: 90,
       },
       {
         level: 8,
-        overtaking: 99,
+        overtaking: 89,
         defending: 84,
-        qualifying: 94,
-        raceStart: 79,
-        tireManagement: 89,
+        qualifying: 79,
+        raceStart: 99,
+        tireManagement: 94,
+      },
+    ],
+  },
+    {
+    id: 66,
+    name: 'Lando Norris',
+    rarity: 'epic',
+    series: 12,
+    stats: [
+      {
+        level: 1,
+        overtaking: 62,
+        defending: 57,
+        qualifying: 52,
+        raceStart: 72,
+        tireManagement: 67,
+      },
+      {
+        level: 2,
+        overtaking: 66,
+        defending: 61,
+        qualifying: 56,
+        raceStart: 76,
+        tireManagement: 71,
+      },
+      {
+        level: 3,
+        overtaking: 70,
+        defending: 65,
+        qualifying: 60,
+        raceStart: 80,
+        tireManagement: 75,
+      },
+      {
+        level: 4,
+        overtaking: 74,
+        defending: 69,
+        qualifying: 64,
+        raceStart: 84,
+        tireManagement: 79,
+      },
+      {
+        level: 5,
+        overtaking: 78,
+        defending: 73,
+        qualifying: 68,
+        raceStart: 88,
+        tireManagement: 83,
+      },
+      {
+        level: 6,
+        overtaking: 81,
+        defending: 76,
+        qualifying: 71,
+        raceStart: 91,
+        tireManagement: 86,
+      },
+      {
+        level: 7,
+        overtaking: 85,
+        defending: 80,
+        qualifying: 75,
+        raceStart: 95,
+        tireManagement: 90,
+      },
+      {
+        level: 8,
+        overtaking: 89,
+        defending: 84,
+        qualifying: 79,
+        raceStart: 99,
+        tireManagement: 94,
       },
     ],
   },

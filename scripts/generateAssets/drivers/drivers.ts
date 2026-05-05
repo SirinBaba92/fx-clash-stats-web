@@ -7,7 +7,7 @@ import type { Driver } from './types';
 const DRIVERS: Driver[] = [
   {
     id: 1,
-    name: 'Logan Sargeant',
+    name: 'Arvid Lindblad',
     rarity: 'common',
     series: 1,
     stats: [

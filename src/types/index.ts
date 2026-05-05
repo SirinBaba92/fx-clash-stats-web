@@ -1,7 +1,7 @@
 import { Driver } from '@/features/drivers';
 import { Part } from '@/features/parts';
 
-export type Rarity = 'common' | 'rare' | 'epic' | 'stock';
+export type Rarity = 'common' | 'rare' | 'epic' | 'legendary' | 'stock';
 
 export interface Upgrade {
   cards: number;

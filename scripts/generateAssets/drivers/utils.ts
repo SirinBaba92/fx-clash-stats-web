@@ -80,6 +80,34 @@ const calculateDriverWeightedScore = (
   return weightedScore;
 };
 
+const LEGENDARY_TIER_BY_DRIVER_NAME: Record<string, number> = {
+  'Giancarlo Fisichella': 0,
+  'Bruce McLaren': 0,
+  'Gilles Villeneuve': 0,
+
+  'Mark Webber': 1,
+  'Gerhard Berger': 1,
+  'Felipe Massa': 1,
+  'David Coulthard': 1,
+  'Jochen Rindt': 1,
+
+  'James Hunt': 2,
+  'Jacques Villeneuve': 2,
+  'Mario Andretti': 2,
+  'Jenson Button': 2,
+  'Damon Hill': 2,
+  'Nigel Mansell': 2,
+
+  'Graham Hill': 3,
+  'Emerson Fittipaldi': 3,
+  'Niki Lauda': 3,
+  'Jack Brabham': 3,
+  'Juan Manuel Fangio': 3,
+  'Alain Prost': 3,
+  'Michael Schumacher': 3,
+  'Ayrton Senna': 3,
+};
+
 const calculateDriverUpgrade = (driver: Driver, stat: Stat): Upgrade => ({
   cards: CARDS_NEEDED[stat.level - 1],
   coins: RARITY_COINS_COST[driver.rarity][driver.series - 1][stat.level - 1],

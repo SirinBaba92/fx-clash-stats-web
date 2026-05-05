@@ -13,6 +13,7 @@ import type { CollectedAssetsKeys } from '@/store/collectedAssetsStore';
 const backgroundColor: { [key in Rarity]: string } = {
   common: 'bg-blue-100 dark:bg-blue-900',
   epic: 'bg-fuchsia-100 dark:bg-fuchsia-900',
+  legendary: 'bg-yellow-100 dark:bg-yellow-900',
   rare: 'bg-orange-100 dark:bg-orange-900',
   stock: 'bg-gray-100 dark:bg-gray-900',
 };

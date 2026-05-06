@@ -6,7 +6,7 @@ const useTeamScore = (driver: BestDrivers, parts: BestParts) => {
 
   let teamScore = sum.speed + sum.powerUnit + sum.cornering + sum.qualifying;
 
-  const pitStopTimeValue = -28.62 * sum.pitStopTime + 177.7;
+  const pitStopTimeValue = 207.7 - 28.62 * sum.pitStopTime;
 
   teamScore += pitStopTimeValue;
 

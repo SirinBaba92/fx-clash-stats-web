@@ -5,9 +5,28 @@ import type { BestDrivers, BestPartOnceUpgradedRequirements } from '../types';
 
 type BestDriversOnceUpgradedReturn = BestDrivers & BestPartOnceUpgradedRequirements;
 
-const useBestDriversOnceUpgraded = (): BestDriversOnceUpgradedReturn => {
+const useBestDriversOnceUpgraded = (focusStats?: string[]): BestDriversOnceUpgradedReturn => {
   const drivers = useDrivers();
   const collectedDrivers = useCollectedAssetsStore((data) => data.drivers);
+
+  const isFocusStat = (statName: string) => focusStats?.includes(statName) ?? false;
+
+  const calculateDriverScore = (stat: BestDrivers['driver1']['stat']) => {
+    if (!focusStats?.length) {
+      return stat.score.weighted;
+    }
+
+    const normalWeight = 1;
+    const focusWeight = 2;
+
+    return (
+      stat.overtaking * (isFocusStat('overtaking') ? focusWeight : normalWeight) +
+      stat.defending * (isFocusStat('defending') ? focusWeight : normalWeight) +
+      stat.qualifying * (isFocusStat('qualifying') ? focusWeight : normalWeight) +
+      stat.raceStart * (isFocusStat('raceStart') ? focusWeight : normalWeight) +
+      stat.tireManagement * (isFocusStat('tireManagement') ? focusWeight : normalWeight)
+    );
+  };
 
   const filteredDrivers = drivers.filter((driver) =>
     Object.keys(collectedDrivers)
@@ -20,7 +39,6 @@ const useBestDriversOnceUpgraded = (): BestDriversOnceUpgradedReturn => {
   }
 
   const driversDataForMaxLevelAvailable = filteredDrivers.map((driver) => {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const collectedDriverData = collectedDrivers[driver.id]!;
 
     const driverUpgradeRequirements = assetUpgradeRequirements(
@@ -29,27 +47,29 @@ const useBestDriversOnceUpgraded = (): BestDriversOnceUpgradedReturn => {
       collectedDriverData.cards,
     );
 
+    const maxStat = driver.stats.find((stat) => driverUpgradeRequirements.maxLevelAvailable === stat.level)!;
+
     return {
       driver,
       driverUpgradeRequirements,
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      maxStat: driver.stats.find((stat) => driverUpgradeRequirements.maxLevelAvailable === stat.level)!,
+      maxStat,
+      score: calculateDriverScore(maxStat),
     };
   });
 
   const [driver1, driver2] = driversDataForMaxLevelAvailable.sort((bestDriverA, bestDriverB) =>
-    bestDriverA.maxStat.score.weighted > bestDriverB.maxStat.score.weighted ? -1 : 1,
+    bestDriverA.score > bestDriverB.score ? -1 : 1,
   );
 
   return {
     driver1: {
       asset: driver1.driver,
-      score: driver1.maxStat.score.weighted,
+      score: driver1.score,
       stat: driver1.maxStat,
     },
     driver2: {
       asset: driver2.driver,
-      score: driver2.maxStat.score.weighted,
+      score: driver2.score,
       stat: driver2.maxStat,
     },
     hasTwoDrivers: true,

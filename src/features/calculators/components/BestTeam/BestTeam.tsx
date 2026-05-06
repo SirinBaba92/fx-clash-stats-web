@@ -35,7 +35,7 @@ const BestTeam = () => {
   const bestDrivers = useBestDrivers(focusStats);
   const bestParts = useBestParts(focusStats);
 
-  const score = useTeamScore(bestDrivers, bestParts, focusStats);
+  const score = useTeamScore(bestDrivers, bestParts);
 
   return (
     <Container maxWidth='2xl'>

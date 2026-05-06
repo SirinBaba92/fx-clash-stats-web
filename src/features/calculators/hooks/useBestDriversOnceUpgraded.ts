@@ -11,7 +11,7 @@ const useBestDriversOnceUpgraded = (focusStats?: string[]): BestDriversOnceUpgra
 
   const isFocusStat = (statName: string) => focusStats?.includes(statName) ?? false;
 
-  const calculateDriverScore = (stat: BestDrivers['driver1']['stat']) => {
+  const calculateDriverScore = (stat: NonNullable<BestDrivers['driver1']>['stat']) => {
     if (!focusStats?.length) {
       return stat.score.weighted;
     }

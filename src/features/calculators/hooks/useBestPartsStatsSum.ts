@@ -14,6 +14,7 @@ const useBestPartsStatsSum = (props: Props): BestPartsSum => {
 
   return {
     cornering:
+      1 +
       bestBrake.stat.cornering +
       bestEngine.stat.cornering +
       bestFrontWing.stat.cornering +
@@ -21,6 +22,7 @@ const useBestPartsStatsSum = (props: Props): BestPartsSum => {
       bestRearWing.stat.cornering +
       bestSuspension.stat.cornering,
     pitStopTime:
+      1 +
       bestBrake.stat.pitStopTime +
       bestEngine.stat.pitStopTime +
       bestFrontWing.stat.pitStopTime +
@@ -28,6 +30,7 @@ const useBestPartsStatsSum = (props: Props): BestPartsSum => {
       bestRearWing.stat.pitStopTime +
       bestSuspension.stat.pitStopTime,
     powerUnit:
+      1 +
       bestBrake.stat.powerUnit +
       bestEngine.stat.powerUnit +
       bestFrontWing.stat.powerUnit +
@@ -35,6 +38,7 @@ const useBestPartsStatsSum = (props: Props): BestPartsSum => {
       bestRearWing.stat.powerUnit +
       bestSuspension.stat.powerUnit,
     qualifying:
+      1 +
       bestBrake.stat.qualifying +
       bestEngine.stat.qualifying +
       bestFrontWing.stat.qualifying +
@@ -42,6 +46,7 @@ const useBestPartsStatsSum = (props: Props): BestPartsSum => {
       bestRearWing.stat.qualifying +
       bestSuspension.stat.qualifying,
     speed:
+      1 +
       bestBrake.stat.speed +
       bestEngine.stat.speed +
       bestFrontWing.stat.speed +

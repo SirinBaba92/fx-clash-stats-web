@@ -1,71 +1,18 @@
 import type { BestDrivers, BestParts } from '../types';
-import type { PartStat } from '@/features/parts';
 
-interface DriverScoreStat {
-  overtaking: number;
-  defending: number;
-  qualifying: number;
-  raceStart: number;
-  tireManagement: number;
-}
-
-const useTeamScore = (driver: BestDrivers, parts: BestParts, focusStats?: string[]) => {
+const useTeamScore = (driver: BestDrivers, parts: BestParts) => {
   const { driver1, driver2, hasTwoDrivers } = driver;
-  const { bestBrake, bestEngine, bestFrontWing, bestGearbox, bestRearWing, bestSuspension } = parts;
+  const { sum } = parts;
 
-  const isFocusStat = (statName: string) => focusStats?.includes(statName) ?? false;
+  let teamScore = sum.speed + sum.powerUnit + sum.cornering + sum.qualifying;
 
-  const calculateWeightedPartScore = (stat: PartStat) => {
-    const normalWeight = 1;
-    const focusWeight = 2;
-
-    return (
-      stat.cornering * (isFocusStat('cornering') ? focusWeight : normalWeight) +
-      stat.powerUnit * (isFocusStat('powerUnit') ? focusWeight : normalWeight) +
-      stat.qualifying * (isFocusStat('qualifying') ? focusWeight : normalWeight) +
-      stat.speed * (isFocusStat('speed') ? focusWeight : normalWeight)
-    );
-  };
-
-  const calculateWeightedDriverScore = (stat: DriverScoreStat) => {
-    const normalWeight = 1;
-    const focusWeight = 2;
-
-    return (
-      stat.overtaking * (isFocusStat('overtaking') ? focusWeight : normalWeight) +
-      stat.defending * (isFocusStat('defending') ? focusWeight : normalWeight) +
-      stat.qualifying * (isFocusStat('qualifying') ? focusWeight : normalWeight) +
-      stat.raceStart * (isFocusStat('raceStart') ? focusWeight : normalWeight) +
-      stat.tireManagement * (isFocusStat('tireManagement') ? focusWeight : normalWeight)
-    );
-  };
-
-  const pitStopTimeSum =
-    bestBrake.stat.pitStopTime +
-    bestEngine.stat.pitStopTime +
-    bestFrontWing.stat.pitStopTime +
-    bestGearbox.stat.pitStopTime +
-    bestRearWing.stat.pitStopTime +
-    bestSuspension.stat.pitStopTime;
-
-  let teamScore =
-    calculateWeightedPartScore(bestBrake.stat) +
-    calculateWeightedPartScore(bestEngine.stat) +
-    calculateWeightedPartScore(bestFrontWing.stat) +
-    calculateWeightedPartScore(bestGearbox.stat) +
-    calculateWeightedPartScore(bestRearWing.stat) +
-    calculateWeightedPartScore(bestSuspension.stat);
-
-  const a = -28.62;
-  const b = 177.7;
-
-  const pitStopTimeValue = a * pitStopTimeSum + b;
+  const pitStopTimeValue = -28.62 * sum.pitStopTime + 177.7;
 
   teamScore += pitStopTimeValue;
 
   if (hasTwoDrivers && driver1 && driver2) {
-    teamScore += calculateWeightedDriverScore(driver1.stat);
-    teamScore += calculateWeightedDriverScore(driver2.stat);
+    teamScore += driver1.stat.statsSum;
+    teamScore += driver2.stat.statsSum;
   }
 
   return teamScore.toFixed(0);

@@ -10,7 +10,7 @@ const BestTeam = () => {
   const { t } = useTranslation(['calculators']);
 
   // Test: Sao Paolo = Overtaking + Speed
-  const focusStats = ['overtaking', 'speed'];
+  const focusStats = ['defending', 'cornering'];
 
   const bestDrivers = useBestDrivers(focusStats);
   const bestParts = useBestParts(focusStats);

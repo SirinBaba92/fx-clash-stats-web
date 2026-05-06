@@ -11,7 +11,7 @@ const BestTeam = () => {
   const { t } = useTranslation(['calculators']);
 
   // 👉 TEST: Serie auswählen (z.B. 2)
-  const selectedSeries = 2;
+  const selectedSeries = 1;
 
   const focusStats = getSeriesFocusStats(selectedSeries);
 

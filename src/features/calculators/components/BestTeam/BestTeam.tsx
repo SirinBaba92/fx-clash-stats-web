@@ -5,12 +5,15 @@ import { useTranslation } from 'react-i18next';
 import useBestDrivers from '../../hooks/useBestDrivers';
 import useBestParts from '../../hooks/useBestParts';
 import useTeamScore from '../../hooks/useTeamScore';
+import { getSeriesFocusStats } from '../../utils/getSeriesFocusStats';
 
 const BestTeam = () => {
   const { t } = useTranslation(['calculators']);
 
-  // Test: Sao Paolo = Overtaking + Speed
-  const focusStats = ['defending', 'cornering'];
+  // 👉 TEST: Serie auswählen (z.B. 2)
+  const selectedSeries = 2;
+
+  const focusStats = getSeriesFocusStats(selectedSeries);
 
   const bestDrivers = useBestDrivers(focusStats);
   const bestParts = useBestParts(focusStats);

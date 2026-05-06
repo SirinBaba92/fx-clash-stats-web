@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BestDrivers, BestParts } from '../BestAssets';
 import { Container, Heading3 } from '@/components/ui';
 import { TeamPartsStats, TeamScore } from '../TeamStats';
@@ -7,11 +8,11 @@ import useBestParts from '../../hooks/useBestParts';
 import useTeamScore from '../../hooks/useTeamScore';
 import { getSeriesFocusStats } from '../../utils/getSeriesFocusStats';
 
+const SERIES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
 const BestTeam = () => {
   const { t } = useTranslation(['calculators']);
-
-  // 👉 TEST: Serie auswählen (z.B. 2)
-  const selectedSeries = 1;
+  const [selectedSeries, setSelectedSeries] = useState(1);
 
   const focusStats = getSeriesFocusStats(selectedSeries);
 
@@ -23,6 +24,23 @@ const BestTeam = () => {
   return (
     <Container maxWidth='2xl'>
       <Heading3>{t('calculators:bestTeam')}</Heading3>
+
+      <div className='flex flex-row justify-center w-full mb-5'>
+        <select
+          className='bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-2 text-gray-900 dark:text-white'
+          value={selectedSeries}
+          onChange={(event) => setSelectedSeries(Number(event.target.value))}
+        >
+          {SERIES.map((series) => (
+            <option
+              key={series}
+              value={series}
+            >
+              Serie {series}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <div className='flex flex-row justify-center w-full mb-5'>
         <TeamScore score={score} />

@@ -20,6 +20,7 @@ type AssetsCollectedActions = {
   updateCollectedAssetCards: (assetKey: CollectedAssetsKeys, id: number, cards: number) => void;
   increaseCollectedAssetCards: (assetKey: CollectedAssetsKeys, id: number) => void;
   decreaseCollectedAssetCards: (assetKey: CollectedAssetsKeys, id: number) => void;
+  resetCollectedAssets: () => void;
 };
 
 export type AssetsCollectedStore = AssetsCollectedState & AssetsCollectedActions;
@@ -52,6 +53,21 @@ const useCollectedAssetsStore = create<AssetsCollectedStore>()(
             cards: currentCollectedCards + 1,
             level: currentLevel === 0 ? 1 : currentLevel,
           };
+
+          return state;
+        });
+      },
+      resetCollectedAssets: () => {
+        const [set] = args;
+
+        return set((state) => {
+          state.brakes = {};
+          state.engines = {};
+          state.frontWings = {};
+          state.gearboxes = {};
+          state.rearWings = {};
+          state.suspensions = {};
+          state.drivers = {};
 
           return state;
         });

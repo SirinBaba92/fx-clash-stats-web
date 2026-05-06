@@ -21,11 +21,7 @@ const AssetListPage = (props: Props) => {
   const resetCollectedAssets = useCollectedAssetsStore((state) => state.resetCollectedAssets);
 
   const handleResetCollectedAssets = () => {
-    const shouldReset = window.confirm('Do you really want to reset all collected assets?');
-
-    if (shouldReset) {
-      resetCollectedAssets();
-    }
+    resetCollectedAssets();
   };
 
   return (

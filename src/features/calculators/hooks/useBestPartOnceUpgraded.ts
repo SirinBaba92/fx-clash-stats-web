@@ -5,8 +5,30 @@ import type { Part, PartsCollectedKeys } from '@/features/parts';
 
 type BestPartsOnceReturn = BestPart & BestPartOnceUpgradedRequirements;
 
-const useBestPartOnceUpgraded = (partData: Part[], partKey: PartsCollectedKeys): BestPartsOnceReturn => {
+const useBestPartOnceUpgraded = (
+  partData: Part[],
+  partKey: PartsCollectedKeys,
+  focusStats?: string[],
+): BestPartsOnceReturn => {
   const collectedParts = useCollectedAssetsStore((data) => data[partKey]);
+
+  const isFocusStat = (statName: string) => focusStats?.includes(statName) ?? false;
+
+  const calculatePartScore = (stat: BestPart['stat']) => {
+    if (!focusStats?.length) {
+      return stat.score.weighted;
+    }
+
+    const normalWeight = 1;
+    const focusWeight = 2;
+
+    return (
+      stat.speed * (isFocusStat('speed') ? focusWeight : normalWeight) +
+      stat.cornering * (isFocusStat('cornering') ? focusWeight : normalWeight) +
+      stat.powerUnit * (isFocusStat('powerUnit') ? focusWeight : normalWeight) +
+      stat.qualifying * (isFocusStat('qualifying') ? focusWeight : normalWeight)
+    );
+  };
 
   const filteredParts = partData.filter((part) =>
     Object.keys(collectedParts)
@@ -15,7 +37,6 @@ const useBestPartOnceUpgraded = (partData: Part[], partKey: PartsCollectedKeys):
   );
 
   const partsDataForMaxLevelAvailable = filteredParts.map((part) => {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const collectedPartData = collectedParts[part.id]!;
 
     const partUpgradeRequirements = assetUpgradeRequirements(
@@ -24,21 +45,23 @@ const useBestPartOnceUpgraded = (partData: Part[], partKey: PartsCollectedKeys):
       collectedPartData.cards,
     );
 
+    const maxStat = part.stats.find((stat) => partUpgradeRequirements.maxLevelAvailable === stat.level)!;
+
     return {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      maxStat: part.stats.find((stat) => partUpgradeRequirements.maxLevelAvailable === stat.level)!,
+      maxStat,
       part,
       partUpgradeRequirements,
+      score: calculatePartScore(maxStat),
     };
   });
 
   const [bestPart] = partsDataForMaxLevelAvailable.sort((partA, partB) =>
-    partA.maxStat.score.weighted > partB.maxStat.score.weighted ? -1 : 1,
+    partA.score > partB.score ? -1 : 1,
   );
 
   return {
     asset: bestPart.part,
-    score: bestPart.maxStat.score.weighted,
+    score: bestPart.score,
     stat: bestPart.maxStat,
     upgradeRequirements: bestPart.partUpgradeRequirements,
   };

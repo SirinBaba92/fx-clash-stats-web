@@ -1,6 +1,14 @@
 import type { BestDrivers, BestParts } from '../types';
 import type { PartStat } from '@/features/parts';
 
+interface DriverScoreStat {
+  overtaking: number;
+  defending: number;
+  qualifying: number;
+  raceStart: number;
+  tireManagement: number;
+}
+
 const useTeamScore = (driver: BestDrivers, parts: BestParts, focusStats?: string[]) => {
   const { driver1, driver2, hasTwoDrivers } = driver;
   const { bestBrake, bestEngine, bestFrontWing, bestGearbox, bestRearWing, bestSuspension } = parts;
@@ -19,7 +27,7 @@ const useTeamScore = (driver: BestDrivers, parts: BestParts, focusStats?: string
     );
   };
 
-  const calculateWeightedDriverScore = (stat: typeof driver1.stat) => {
+  const calculateWeightedDriverScore = (stat: DriverScoreStat) => {
     const normalWeight = 1;
     const focusWeight = 2;
 
@@ -55,7 +63,7 @@ const useTeamScore = (driver: BestDrivers, parts: BestParts, focusStats?: string
 
   teamScore += pitStopTimeValue;
 
-  if (hasTwoDrivers) {
+  if (hasTwoDrivers && driver1 && driver2) {
     teamScore += calculateWeightedDriverScore(driver1.stat);
     teamScore += calculateWeightedDriverScore(driver2.stat);
   }

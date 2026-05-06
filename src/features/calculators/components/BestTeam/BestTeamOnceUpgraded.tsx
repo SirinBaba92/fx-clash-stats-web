@@ -37,7 +37,7 @@ const BestTeamOnceUpgraded = () => {
   const bestDriversOnceUpgraded = useBestDriversOnceUpgraded(focusStats);
   const bestPartsOnceUpgraded = useBestPartsOnceUpgraded(focusStats);
 
-  const score = useTeamScore(bestDriversOnceUpgraded, bestPartsOnceUpgraded, focusStats);
+  const score = useTeamScore(bestDriversOnceUpgraded, bestPartsOnceUpgraded);
 
   const coinsNeeded =
     (bestDriversOnceUpgraded.upgradeRequirements?.coinsNeeded ?? 0) +

@@ -21,6 +21,7 @@ type AssetsCollectedActions = {
   increaseCollectedAssetCards: (assetKey: CollectedAssetsKeys, id: number) => void;
   decreaseCollectedAssetCards: (assetKey: CollectedAssetsKeys, id: number) => void;
   resetCollectedAssets: () => void;
+  unlockCollectedAssetsLevel1: (assetKey: CollectedAssetsKeys, ids: number[]) => void;
 };
 
 export type AssetsCollectedStore = AssetsCollectedState & AssetsCollectedActions;
@@ -30,6 +31,7 @@ const useCollectedAssetsStore = create<AssetsCollectedStore>()(
     immer((...args) => ({
       ...createPartsCollectedSlice(...args),
       ...createDriversCollectedSlice(...args),
+
       decreaseCollectedAssetCards: (assetKey, id) => {
         const [set] = args;
 
@@ -41,6 +43,7 @@ const useCollectedAssetsStore = create<AssetsCollectedStore>()(
           return state;
         });
       },
+
       increaseCollectedAssetCards: (assetKey, id) => {
         const [set] = args;
 
@@ -57,6 +60,7 @@ const useCollectedAssetsStore = create<AssetsCollectedStore>()(
           return state;
         });
       },
+
       resetCollectedAssets: () => {
         const [set] = args;
 
@@ -72,6 +76,22 @@ const useCollectedAssetsStore = create<AssetsCollectedStore>()(
           return state;
         });
       },
+
+      unlockCollectedAssetsLevel1: (assetKey, ids) => {
+        const [set] = args;
+
+        return set((state) => {
+          ids.forEach((id) => {
+            state[assetKey][id] = {
+              cards: 0,
+              level: 1,
+            };
+          });
+
+          return state;
+        });
+      },
+
       updateCollectedAssetCards: (assetKey, id, cards) => {
         const [set] = args;
 
@@ -87,6 +107,7 @@ const useCollectedAssetsStore = create<AssetsCollectedStore>()(
           return state;
         });
       },
+
       updateCollectedAssetLevel: (assetKey, id, level) => {
         const [set] = args;
 

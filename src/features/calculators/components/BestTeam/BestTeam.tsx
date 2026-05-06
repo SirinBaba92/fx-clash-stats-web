@@ -9,11 +9,13 @@ import useTeamScore from '../../hooks/useTeamScore';
 const BestTeam = () => {
   const { t } = useTranslation(['calculators']);
 
-  const bestDrivers = useBestDrivers();
-  const bestParts = useBestParts();
-
   // Test: Sao Paolo = Overtaking + Speed
-  const score = useTeamScore(bestDrivers, bestParts, ['overtaking', 'speed']);
+  const focusStats = ['overtaking', 'speed'];
+
+  const bestDrivers = useBestDrivers(focusStats);
+  const bestParts = useBestParts(focusStats);
+
+  const score = useTeamScore(bestDrivers, bestParts, focusStats);
 
   return (
     <Container maxWidth='2xl'>

@@ -12,7 +12,8 @@ const BestTeam = () => {
   const bestDrivers = useBestDrivers();
   const bestParts = useBestParts();
 
-  const score = useTeamScore(bestDrivers, bestParts);
+  // Test: Sao Paolo = Overtaking + Speed
+  const score = useTeamScore(bestDrivers, bestParts, ['overtaking', 'speed']);
 
   return (
     <Container maxWidth='2xl'>

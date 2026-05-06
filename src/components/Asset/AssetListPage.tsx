@@ -19,9 +19,17 @@ const AssetListPage = (props: Props) => {
 
   const { filteredAssets, setSearch, search } = useAssetsFuseSearch(assets);
   const resetCollectedAssets = useCollectedAssetsStore((state) => state.resetCollectedAssets);
+  const unlockCollectedAssetsLevel1 = useCollectedAssetsStore((state) => state.unlockCollectedAssetsLevel1);
 
   const handleResetCollectedAssets = () => {
     resetCollectedAssets();
+  };
+
+  const handleUnlockCollectedAssetsLevel1 = () => {
+    unlockCollectedAssetsLevel1(
+      assetKey,
+      assets.filter((asset) => asset.rarity !== 'stock').map((asset) => asset.id),
+    );
   };
 
   return (
@@ -30,6 +38,14 @@ const AssetListPage = (props: Props) => {
         <Heading4 className='m-0'>{title}</Heading4>
 
         <div className='flex flex-col sm:flex-row gap-2'>
+          <button
+            className='text-white bg-green-700 hover:bg-green-800 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 dark:bg-green-600 dark:hover:bg-green-700'
+            onClick={handleUnlockCollectedAssetsLevel1}
+            type='button'
+          >
+            Unlock all lvl 1
+          </button>
+
           <button
             className='text-white bg-red-700 hover:bg-red-800 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-700'
             onClick={handleResetCollectedAssets}

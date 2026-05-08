@@ -29,9 +29,7 @@ const WeightInput = (props: WeightInputProps) => {
   return (
     <div
       className={`flex flex-col gap-1 rounded-lg p-2 transition-colors ${
-        isModified
-          ? 'bg-yellow-100 dark:bg-yellow-900/20 border border-yellow-400'
-          : 'bg-transparent'
+        isModified ? 'bg-yellow-100 dark:bg-yellow-900/20 border border-yellow-400' : 'bg-transparent'
       }`}
     >
       <div className='flex items-center gap-2'>
@@ -41,18 +39,16 @@ const WeightInput = (props: WeightInputProps) => {
           className='w-16 px-2 py-1 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800'
           min={0}
           onChange={(event) => {
-            const nextValue = Number(event.target.value);
+            const nextValue = parseInt(event.target.value, 10);
 
             onChange(Number.isNaN(nextValue) ? 0 : nextValue);
           }}
           type='number'
-          value={value}
+          value={String(value)}
         />
 
         {isModified && (
-          <span className='text-[11px] font-semibold text-yellow-700 dark:text-yellow-300'>
-            Modified
-          </span>
+          <span className='text-[11px] font-semibold text-yellow-700 dark:text-yellow-300'>Modified</span>
         )}
       </div>
 
@@ -62,9 +58,7 @@ const WeightInput = (props: WeightInputProps) => {
         {delta !== 0 && (
           <span
             className={`ml-1 font-semibold ${
-              delta > 0
-                ? 'text-green-600 dark:text-green-400'
-                : 'text-red-600 dark:text-red-400'
+              delta > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
             }`}
           >
             ({delta > 0 ? '+' : ''}
@@ -80,25 +74,13 @@ const BestTeam = () => {
   const { t } = useTranslation(['calculators']);
   const [selectedSeries, setSelectedSeries] = useState(1);
 
-  const seriesWeights = useSeriesWeightsStore((state) =>
-    state.getSeriesWeights(selectedSeries),
-  );
+  const seriesWeights = useSeriesWeightsStore((state) => state.getSeriesWeights(selectedSeries));
+  const updateSeriesWeights = useSeriesWeightsStore((state) => state.updateSeriesWeights);
+  const resetSeriesWeights = useSeriesWeightsStore((state) => state.resetSeriesWeights);
 
-  const updateSeriesWeights = useSeriesWeightsStore(
-    (state) => state.updateSeriesWeights,
-  );
+  const recommendedSeriesWeights = SERIES_WEIGHTS[selectedSeries] ?? SERIES_WEIGHTS[1];
 
-  const resetSeriesWeights = useSeriesWeightsStore(
-    (state) => state.resetSeriesWeights,
-  );
-
-  const recommendedSeriesWeights =
-    SERIES_WEIGHTS[selectedSeries] ?? SERIES_WEIGHTS[1];
-
-  const updateDriverWeight = (
-    key: keyof DriverWeights,
-    value: number,
-  ) => {
+  const updateDriverWeight = (key: keyof DriverWeights, value: number) => {
     updateSeriesWeights(selectedSeries, {
       ...seriesWeights,
       drivers: {
@@ -108,10 +90,7 @@ const BestTeam = () => {
     });
   };
 
-  const updatePartWeight = (
-    key: keyof PartWeights,
-    value: number,
-  ) => {
+  const updatePartWeight = (key: keyof PartWeights, value: number) => {
     updateSeriesWeights(selectedSeries, {
       ...seriesWeights,
       parts: {
@@ -160,37 +139,37 @@ const BestTeam = () => {
 
             <WeightInput
               label='Overtaking'
+              onChange={(value) => updateDriverWeight('overtaking', value)}
               recommendedValue={recommendedSeriesWeights.drivers.overtaking}
               value={seriesWeights.drivers.overtaking}
-              onChange={(value) => updateDriverWeight('overtaking', value)}
             />
 
             <WeightInput
               label='Defending'
+              onChange={(value) => updateDriverWeight('defending', value)}
               recommendedValue={recommendedSeriesWeights.drivers.defending}
               value={seriesWeights.drivers.defending}
-              onChange={(value) => updateDriverWeight('defending', value)}
             />
 
             <WeightInput
               label='Qualifying'
+              onChange={(value) => updateDriverWeight('qualifying', value)}
               recommendedValue={recommendedSeriesWeights.drivers.qualifying}
               value={seriesWeights.drivers.qualifying}
-              onChange={(value) => updateDriverWeight('qualifying', value)}
             />
 
             <WeightInput
               label='Race Start'
+              onChange={(value) => updateDriverWeight('raceStart', value)}
               recommendedValue={recommendedSeriesWeights.drivers.raceStart}
               value={seriesWeights.drivers.raceStart}
-              onChange={(value) => updateDriverWeight('raceStart', value)}
             />
 
             <WeightInput
               label='Tyre Management'
+              onChange={(value) => updateDriverWeight('tireManagement', value)}
               recommendedValue={recommendedSeriesWeights.drivers.tireManagement}
               value={seriesWeights.drivers.tireManagement}
-              onChange={(value) => updateDriverWeight('tireManagement', value)}
             />
           </div>
 
@@ -199,37 +178,37 @@ const BestTeam = () => {
 
             <WeightInput
               label='Speed'
+              onChange={(value) => updatePartWeight('speed', value)}
               recommendedValue={recommendedSeriesWeights.parts.speed}
               value={seriesWeights.parts.speed}
-              onChange={(value) => updatePartWeight('speed', value)}
             />
 
             <WeightInput
               label='Power Unit'
+              onChange={(value) => updatePartWeight('powerUnit', value)}
               recommendedValue={recommendedSeriesWeights.parts.powerUnit}
               value={seriesWeights.parts.powerUnit}
-              onChange={(value) => updatePartWeight('powerUnit', value)}
             />
 
             <WeightInput
               label='Cornering'
+              onChange={(value) => updatePartWeight('cornering', value)}
               recommendedValue={recommendedSeriesWeights.parts.cornering}
               value={seriesWeights.parts.cornering}
-              onChange={(value) => updatePartWeight('cornering', value)}
             />
 
             <WeightInput
               label='Qualifying'
+              onChange={(value) => updatePartWeight('qualifying', value)}
               recommendedValue={recommendedSeriesWeights.parts.qualifying}
               value={seriesWeights.parts.qualifying}
-              onChange={(value) => updatePartWeight('qualifying', value)}
             />
 
             <WeightInput
               label='Pit Stop Time'
+              onChange={(value) => updatePartWeight('pitStopTime', value)}
               recommendedValue={recommendedSeriesWeights.parts.pitStopTime}
               value={seriesWeights.parts.pitStopTime}
-              onChange={(value) => updatePartWeight('pitStopTime', value)}
             />
           </div>
         </div>

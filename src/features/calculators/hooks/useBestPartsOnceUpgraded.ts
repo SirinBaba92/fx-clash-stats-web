@@ -2,27 +2,30 @@ import { useBrakes, useEngines, useFrontWings, useGearboxes, useRearWings, useSu
 import useBestPartOnceUpgraded from './useBestPartOnceUpgraded';
 import useBestPartsStatsSum from './useBestPartsStatsSum';
 import type { BestPartOnceUpgradedRequirements, BestParts } from '../types';
+import type { PartWeights } from '../config/seriesWeights';
 
 type BestPartsOnceUpgradedReturn = BestParts & BestPartOnceUpgradedRequirements;
 
-const useBestPartsOnceUpgraded = (focusStats?: string[]): BestPartsOnceUpgradedReturn => {
+const useBestPartsOnceUpgraded = (
+  partWeights?: PartWeights,
+): BestPartsOnceUpgradedReturn => {
   const brakes = useBrakes();
-  const bestBrake = useBestPartOnceUpgraded(brakes, 'brakes', focusStats);
+  const bestBrake = useBestPartOnceUpgraded(brakes, 'brakes', partWeights);
 
   const engines = useEngines();
-  const bestEngine = useBestPartOnceUpgraded(engines, 'engines', focusStats);
+  const bestEngine = useBestPartOnceUpgraded(engines, 'engines', partWeights);
 
   const frontWings = useFrontWings();
-  const bestFrontWing = useBestPartOnceUpgraded(frontWings, 'frontWings', focusStats);
+  const bestFrontWing = useBestPartOnceUpgraded(frontWings, 'frontWings', partWeights);
 
   const gearboxes = useGearboxes();
-  const bestGearbox = useBestPartOnceUpgraded(gearboxes, 'gearboxes', focusStats);
+  const bestGearbox = useBestPartOnceUpgraded(gearboxes, 'gearboxes', partWeights);
 
   const rearWings = useRearWings();
-  const bestRearWing = useBestPartOnceUpgraded(rearWings, 'rearWings', focusStats);
+  const bestRearWing = useBestPartOnceUpgraded(rearWings, 'rearWings', partWeights);
 
   const suspensions = useSuspensions();
-  const bestSuspension = useBestPartOnceUpgraded(suspensions, 'suspensions', focusStats);
+  const bestSuspension = useBestPartOnceUpgraded(suspensions, 'suspensions', partWeights);
 
   const sum = useBestPartsStatsSum({
     bestBrake,

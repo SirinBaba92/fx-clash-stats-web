@@ -3,11 +3,11 @@ import { BestDrivers, BestParts } from '../BestAssets';
 import { Heading3 } from '@/components/ui';
 import { TeamPartsStats, TeamScore } from '../TeamStats';
 import { formatLongNumber } from '@/utils/formatting';
-import { getSeriesWeights } from '../../utils/getSeriesWeights';
 import { useTranslation } from 'react-i18next';
 import TeamStatCard from '../TeamStats/TeamStatCard';
 import useBestDriversOnceUpgraded from '../../hooks/useBestDriversOnceUpgraded';
 import useBestPartsOnceUpgraded from '../../hooks/useBestPartsOnceUpgraded';
+import useSeriesWeightsStore from '../../store/seriesWeightsStore';
 import useTeamScore from '../../hooks/useTeamScore';
 
 const SERIES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -16,7 +16,7 @@ const BestTeamOnceUpgraded = () => {
   const { t } = useTranslation(['calculators']);
   const [selectedSeries, setSelectedSeries] = useState(1);
 
-  const seriesWeights = getSeriesWeights(selectedSeries);
+  const seriesWeights = useSeriesWeightsStore((state) => state.getSeriesWeights(selectedSeries));
 
   const bestDriversOnceUpgraded = useBestDriversOnceUpgraded(seriesWeights.drivers);
   const bestPartsOnceUpgraded = useBestPartsOnceUpgraded(seriesWeights.parts);
@@ -70,7 +70,9 @@ const BestTeamOnceUpgraded = () => {
 
       <div className='flex flex-row justify-center w-full mb-5 gap-5'>
         <TeamScore score={score} />
-        <TeamStatCard title={t('calculators:coinsNeeded')}>{formatLongNumber(coinsNeeded)}</TeamStatCard>
+        <TeamStatCard title={t('calculators:coinsNeeded')}>
+          {formatLongNumber(coinsNeeded)}
+        </TeamStatCard>
       </div>
 
       <BestDrivers bestDrivers={bestDriversOnceUpgraded} />

@@ -1,25 +1,22 @@
 import useCollectedAssetsStore from '@/store/collectedAssetsStore';
 import type { BestPart } from '../types';
 import type { Part, PartsCollectedKeys } from '@/features/parts';
+import type { PartWeights } from '../config/seriesWeights';
 
-const useBestPart = (partData: Part[], partKey: PartsCollectedKeys, focusStats?: string[]) => {
+const useBestPart = (partData: Part[], partKey: PartsCollectedKeys, partWeights?: PartWeights) => {
   const collectedParts = useCollectedAssetsStore((data) => data[partKey]);
 
-  const isFocusStat = (statName: string) => focusStats?.includes(statName) ?? false;
-
   const calculatePartScore = (stat: BestPart['stat']) => {
-    if (!focusStats?.length) {
+    if (!partWeights) {
       return stat.score.weighted;
     }
 
-    const normalWeight = 1;
-    const focusWeight = 2;
-
     return (
-      stat.speed * (isFocusStat('speed') ? focusWeight : normalWeight) +
-      stat.cornering * (isFocusStat('cornering') ? focusWeight : normalWeight) +
-      stat.powerUnit * (isFocusStat('powerUnit') ? focusWeight : normalWeight) +
-      stat.qualifying * (isFocusStat('qualifying') ? focusWeight : normalWeight)
+      stat.speed * partWeights.speed +
+      stat.cornering * partWeights.cornering +
+      stat.powerUnit * partWeights.powerUnit +
+      stat.qualifying * partWeights.qualifying +
+      (10 - stat.pitStopTime) * partWeights.pitStopTime
     );
   };
 

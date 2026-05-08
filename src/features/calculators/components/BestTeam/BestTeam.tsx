@@ -44,7 +44,28 @@ const BestTeam = () => {
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-gray-700 dark:text-gray-300'>
           <div>
             <p className='font-semibold mb-1'>Driver weights</p>
-            <p>Overtaking: {seriesWeights.drivers.overtaking}</p>
+
+            <div className='flex items-center gap-2'>
+              <span>Overtaking:</span>
+
+              <input
+                className='w-16 px-2 py-1 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800'
+                type='number'
+                value={seriesWeights.drivers.overtaking}
+                onChange={(event) => {
+                  const value = Number(event.target.value);
+
+                  useSeriesWeightsStore.getState().updateSeriesWeights(selectedSeries, {
+                    ...seriesWeights,
+                    drivers: {
+                      ...seriesWeights.drivers,
+                      overtaking: value,
+                    },
+                  });
+                }}
+              />
+            </div>
+
             <p>Defending: {seriesWeights.drivers.defending}</p>
             <p>Qualifying: {seriesWeights.drivers.qualifying}</p>
             <p>Race Start: {seriesWeights.drivers.raceStart}</p>

@@ -9,7 +9,7 @@ import useBestParts from '../../hooks/useBestParts';
 import useSeriesWeightsStore from '../../store/seriesWeightsStore';
 import useTeamScore from '../../hooks/useTeamScore';
 
-import type { DriverWeights, PartWeights, SeriesWeights } from '../../config/seriesWeights';
+import type { DriverWeights, PartWeights } from '../../config/seriesWeights';
 
 const SERIES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -23,8 +23,17 @@ interface WeightInputProps {
 const WeightInput = (props: WeightInputProps) => {
   const { label, onChange, recommendedValue, value } = props;
 
+  const isModified = value !== recommendedValue;
+  const delta = value - recommendedValue;
+
   return (
-    <div className='flex flex-col gap-1'>
+    <div
+      className={`flex flex-col gap-1 rounded-lg p-2 transition-colors ${
+        isModified
+          ? 'bg-yellow-100 dark:bg-yellow-900/20 border border-yellow-400'
+          : 'bg-transparent'
+      }`}
+    >
       <div className='flex items-center gap-2'>
         <span className='w-32'>{label}:</span>
 
@@ -39,10 +48,29 @@ const WeightInput = (props: WeightInputProps) => {
           type='number'
           value={value}
         />
+
+        {isModified && (
+          <span className='text-[11px] font-semibold text-yellow-700 dark:text-yellow-300'>
+            Modified
+          </span>
+        )}
       </div>
 
       <span className='text-[11px] text-gray-500 dark:text-gray-400'>
         Recommend: {recommendedValue}
+
+        {delta !== 0 && (
+          <span
+            className={`ml-1 font-semibold ${
+              delta > 0
+                ? 'text-green-600 dark:text-green-400'
+                : 'text-red-600 dark:text-red-400'
+            }`}
+          >
+            ({delta > 0 ? '+' : ''}
+            {delta})
+          </span>
+        )}
       </span>
     </div>
   );
@@ -52,13 +80,25 @@ const BestTeam = () => {
   const { t } = useTranslation(['calculators']);
   const [selectedSeries, setSelectedSeries] = useState(1);
 
-  const seriesWeights = useSeriesWeightsStore((state) => state.getSeriesWeights(selectedSeries));
-  const updateSeriesWeights = useSeriesWeightsStore((state) => state.updateSeriesWeights);
-  const resetSeriesWeights = useSeriesWeightsStore((state) => state.resetSeriesWeights);
+  const seriesWeights = useSeriesWeightsStore((state) =>
+    state.getSeriesWeights(selectedSeries),
+  );
 
-  const recommendedSeriesWeights = SERIES_WEIGHTS[selectedSeries] ?? SERIES_WEIGHTS[1];
+  const updateSeriesWeights = useSeriesWeightsStore(
+    (state) => state.updateSeriesWeights,
+  );
 
-  const updateDriverWeight = (key: keyof DriverWeights, value: number) => {
+  const resetSeriesWeights = useSeriesWeightsStore(
+    (state) => state.resetSeriesWeights,
+  );
+
+  const recommendedSeriesWeights =
+    SERIES_WEIGHTS[selectedSeries] ?? SERIES_WEIGHTS[1];
+
+  const updateDriverWeight = (
+    key: keyof DriverWeights,
+    value: number,
+  ) => {
     updateSeriesWeights(selectedSeries, {
       ...seriesWeights,
       drivers: {
@@ -68,7 +108,10 @@ const BestTeam = () => {
     });
   };
 
-  const updatePartWeight = (key: keyof PartWeights, value: number) => {
+  const updatePartWeight = (
+    key: keyof PartWeights,
+    value: number,
+  ) => {
     updateSeriesWeights(selectedSeries, {
       ...seriesWeights,
       parts: {

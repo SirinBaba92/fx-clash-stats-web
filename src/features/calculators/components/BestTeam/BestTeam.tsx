@@ -35,17 +35,35 @@ const WeightInput = (props: WeightInputProps) => {
       <div className='flex items-center gap-2'>
         <span className='w-32'>{label}:</span>
 
-        <input
-          className='w-16 px-2 py-1 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800'
-          min={0}
-          onChange={(event) => {
-            const nextValue = parseInt(event.target.value, 10);
+        <div className='flex items-center gap-1'>
+          <button
+            className='px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+            onClick={() => onChange(Math.max(0, value - 1))}
+            type='button'
+          >
+            -
+          </button>
 
-            onChange(Number.isNaN(nextValue) ? 0 : nextValue);
-          }}
-          type='number'
-          value={String(value)}
-        />
+          <input
+            className='w-16 px-2 py-1 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-center'
+            min={0}
+            onChange={(event) => {
+              const nextValue = parseInt(event.target.value, 10);
+
+              onChange(Number.isNaN(nextValue) ? 0 : nextValue);
+            }}
+            type='number'
+            value={String(value)}
+          />
+
+          <button
+            className='px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+            onClick={() => onChange(value + 1)}
+            type='button'
+          >
+            +
+          </button>
+        </div>
 
         {isModified && (
           <span className='text-[11px] font-semibold text-yellow-700 dark:text-yellow-300'>Modified</span>

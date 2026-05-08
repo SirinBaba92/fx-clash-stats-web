@@ -2,38 +2,22 @@ import { useState } from 'react';
 import { BestDrivers, BestParts } from '../BestAssets';
 import { Container, Heading3 } from '@/components/ui';
 import { TeamPartsStats, TeamScore } from '../TeamStats';
+import { getSeriesWeights } from '../../utils/getSeriesWeights';
 import { useTranslation } from 'react-i18next';
 import useBestDrivers from '../../hooks/useBestDrivers';
 import useBestParts from '../../hooks/useBestParts';
 import useTeamScore from '../../hooks/useTeamScore';
-import { getSeriesFocusStats } from '../../utils/getSeriesFocusStats';
 
 const SERIES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
-const formatFocusStat = (stat: string) => {
-  const labels: Record<string, string> = {
-    cornering: 'Cornering',
-    defending: 'Defending',
-    overtaking: 'Overtaking',
-    powerUnit: 'Power Unit',
-    qualifying: 'Qualifying',
-    raceStart: 'Race Start',
-    speed: 'Speed',
-    tireManagement: 'Tyre Management',
-  };
-
-  return labels[stat] ?? stat;
-};
 
 const BestTeam = () => {
   const { t } = useTranslation(['calculators']);
   const [selectedSeries, setSelectedSeries] = useState(1);
 
-  const focusStats = getSeriesFocusStats(selectedSeries);
-  const uniqueFocusStats = [...new Set(focusStats)];
+  const seriesWeights = getSeriesWeights(selectedSeries);
 
-  const bestDrivers = useBestDrivers(focusStats);
-  const bestParts = useBestParts(focusStats);
+  const bestDrivers = useBestDrivers(seriesWeights.drivers);
+  const bestParts = useBestParts(seriesWeights.parts);
 
   const score = useTeamScore(bestDrivers, bestParts);
 
@@ -57,15 +41,24 @@ const BestTeam = () => {
           ))}
         </select>
 
-        <div className='flex flex-wrap justify-center gap-2'>
-          {uniqueFocusStats.map((stat) => (
-            <span
-              key={stat}
-              className='bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300'
-            >
-              {formatFocusStat(stat)}
-            </span>
-          ))}
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-gray-700 dark:text-gray-300'>
+          <div>
+            <p className='font-semibold mb-1'>Driver weights</p>
+            <p>Overtaking: {seriesWeights.drivers.overtaking}</p>
+            <p>Defending: {seriesWeights.drivers.defending}</p>
+            <p>Qualifying: {seriesWeights.drivers.qualifying}</p>
+            <p>Race Start: {seriesWeights.drivers.raceStart}</p>
+            <p>Tyre Management: {seriesWeights.drivers.tireManagement}</p>
+          </div>
+
+          <div>
+            <p className='font-semibold mb-1'>Part weights</p>
+            <p>Speed: {seriesWeights.parts.speed}</p>
+            <p>Power Unit: {seriesWeights.parts.powerUnit}</p>
+            <p>Cornering: {seriesWeights.parts.cornering}</p>
+            <p>Qualifying: {seriesWeights.parts.qualifying}</p>
+            <p>Pit Stop Time: {seriesWeights.parts.pitStopTime}</p>
+          </div>
         </div>
       </div>
 

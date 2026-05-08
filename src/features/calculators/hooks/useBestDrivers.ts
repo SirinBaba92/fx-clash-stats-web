@@ -1,27 +1,23 @@
 import { useDrivers } from '@/features/drivers';
 import useCollectedAssetsStore from '@/store/collectedAssetsStore';
 import type { BestDriver, BestDrivers } from '../types';
+import type { DriverWeights } from '../config/seriesWeights';
 
-const useBestDrivers = (focusStats?: string[]): BestDrivers => {
+const useBestDrivers = (driverWeights?: DriverWeights): BestDrivers => {
   const drivers = useDrivers();
   const collectedDrivers = useCollectedAssetsStore((data) => data.drivers);
 
-  const isFocusStat = (statName: string) => focusStats?.includes(statName) ?? false;
-
   const calculateDriverScore = (stat: BestDriver['stat']) => {
-    if (!focusStats?.length) {
+    if (!driverWeights) {
       return stat.score.weighted;
     }
 
-    const normalWeight = 1;
-    const focusWeight = 2;
-
     return (
-      stat.overtaking * (isFocusStat('overtaking') ? focusWeight : normalWeight) +
-      stat.defending * (isFocusStat('defending') ? focusWeight : normalWeight) +
-      stat.qualifying * (isFocusStat('qualifying') ? focusWeight : normalWeight) +
-      stat.raceStart * (isFocusStat('raceStart') ? focusWeight : normalWeight) +
-      stat.tireManagement * (isFocusStat('tireManagement') ? focusWeight : normalWeight)
+      stat.overtaking * driverWeights.overtaking +
+      stat.defending * driverWeights.defending +
+      stat.qualifying * driverWeights.qualifying +
+      stat.raceStart * driverWeights.raceStart +
+      stat.tireManagement * driverWeights.tireManagement
     );
   };
 

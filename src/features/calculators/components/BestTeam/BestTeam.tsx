@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { BestDrivers, BestParts } from '../BestAssets';
 import { Container, Heading3 } from '@/components/ui';
 import { TeamPartsStats, TeamScore } from '../TeamStats';
-import { getSeriesWeights } from '../../utils/getSeriesWeights';
 import { useTranslation } from 'react-i18next';
 import useBestDrivers from '../../hooks/useBestDrivers';
 import useBestParts from '../../hooks/useBestParts';
+import useSeriesWeightsStore from '../../store/seriesWeightsStore';
 import useTeamScore from '../../hooks/useTeamScore';
 
 const SERIES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -14,7 +14,7 @@ const BestTeam = () => {
   const { t } = useTranslation(['calculators']);
   const [selectedSeries, setSelectedSeries] = useState(1);
 
-  const seriesWeights = getSeriesWeights(selectedSeries);
+  const seriesWeights = useSeriesWeightsStore((state) => state.getSeriesWeights(selectedSeries));
 
   const bestDrivers = useBestDrivers(seriesWeights.drivers);
   const bestParts = useBestParts(seriesWeights.parts);

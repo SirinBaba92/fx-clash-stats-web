@@ -2,25 +2,26 @@ import { useBrakes, useEngines, useFrontWings, useGearboxes, useRearWings, useSu
 import useBestPart from './useBestPart';
 import useBestPartsStatsSum from './useBestPartsStatsSum';
 import type { BestParts } from '../types';
+import type { PartWeights } from '../config/seriesWeights';
 
-const useBestParts = (focusStats?: string[]): BestParts => {
+const useBestParts = (partWeights?: PartWeights): BestParts => {
   const brakes = useBrakes();
-  const bestBrake = useBestPart(brakes, 'brakes', focusStats);
+  const bestBrake = useBestPart(brakes, 'brakes', partWeights);
 
   const engines = useEngines();
-  const bestEngine = useBestPart(engines, 'engines', focusStats);
+  const bestEngine = useBestPart(engines, 'engines', partWeights);
 
   const frontWings = useFrontWings();
-  const bestFrontWing = useBestPart(frontWings, 'frontWings', focusStats);
+  const bestFrontWing = useBestPart(frontWings, 'frontWings', partWeights);
 
   const gearboxes = useGearboxes();
-  const bestGearbox = useBestPart(gearboxes, 'gearboxes', focusStats);
+  const bestGearbox = useBestPart(gearboxes, 'gearboxes', partWeights);
 
   const rearWings = useRearWings();
-  const bestRearWing = useBestPart(rearWings, 'rearWings', focusStats);
+  const bestRearWing = useBestPart(rearWings, 'rearWings', partWeights);
 
   const suspensions = useSuspensions();
-  const bestSuspension = useBestPart(suspensions, 'suspensions', focusStats);
+  const bestSuspension = useBestPart(suspensions, 'suspensions', partWeights);
 
   const sum = useBestPartsStatsSum({
     bestBrake,
@@ -31,7 +32,15 @@ const useBestParts = (focusStats?: string[]): BestParts => {
     bestSuspension,
   });
 
-  return { bestBrake, bestEngine, bestFrontWing, bestGearbox, bestRearWing, bestSuspension, sum };
+  return {
+    bestBrake,
+    bestEngine,
+    bestFrontWing,
+    bestGearbox,
+    bestRearWing,
+    bestSuspension,
+    sum,
+  };
 };
 
 export default useBestParts;

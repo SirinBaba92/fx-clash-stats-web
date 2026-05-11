@@ -65,6 +65,17 @@ const WeightInput = (props: WeightInputProps) => {
           >
             +
           </button>
+
+          {isModified && (
+            <button
+              className='px-2 py-1 rounded bg-yellow-200 dark:bg-yellow-700 hover:bg-yellow-300 dark:hover:bg-yellow-600 text-xs'
+              onClick={() => onChange(recommendedValue)}
+              title='Reset to recommended value'
+              type='button'
+            >
+              ↺
+            </button>
+          )}
         </div>
 
         {isModified && (

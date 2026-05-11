@@ -254,7 +254,7 @@ const BestTeamOnceUpgraded = () => {
         <TeamStatCard title={t('calculators:coinsNeeded')}>{formatLongNumber(coinsNeeded)}</TeamStatCard>
       </div>
 
-      <BestDrivers bestDrivers={bestDriversOnceUpgraded} />
+      <BestDrivers   bestDrivers={bestDriversOnceUpgraded}   driverWeights={seriesWeights.drivers} />
 
       <TeamPartsStats bestParts={bestPartsOnceUpgraded} />
 

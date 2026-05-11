@@ -251,7 +251,7 @@ const BestTeam = () => {
 
       <TeamPartsStats bestParts={bestParts} />
 
-      <BestParts bestParts={bestParts} />
+      <BestParts   bestParts={bestParts}   partWeights={seriesWeights.parts} />
     </Container>
   );
 };

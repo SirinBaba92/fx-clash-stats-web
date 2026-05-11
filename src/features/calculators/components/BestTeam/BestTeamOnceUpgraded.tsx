@@ -258,7 +258,7 @@ const BestTeamOnceUpgraded = () => {
 
       <TeamPartsStats bestParts={bestPartsOnceUpgraded} />
 
-      <BestParts bestParts={bestPartsOnceUpgraded} />
+      <BestParts   bestParts={bestPartsOnceUpgraded}   partWeights={seriesWeights.parts} />
     </>
   );
 };

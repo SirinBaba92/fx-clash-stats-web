@@ -3,13 +3,25 @@ import { BestAssetCard } from '@/components/Asset';
 import { DriverStats } from '@/features/drivers';
 import { useTranslation } from 'react-i18next';
 import type { BestDrivers as BestDriversType } from '../../types';
+import type { DriverWeights } from '../../config/seriesWeights';
 
 interface Props {
   bestDrivers: BestDriversType;
+  driverWeights?: DriverWeights;
 }
 
+const calculateDriverMetaScore = (
+  stat: NonNullable<BestDriversType['driver1']>['stat'],
+  driverWeights: DriverWeights,
+) =>
+  stat.overtaking * driverWeights.overtaking +
+  stat.defending * driverWeights.defending +
+  stat.qualifying * driverWeights.qualifying +
+  stat.raceStart * driverWeights.raceStart +
+  stat.tireManagement * driverWeights.tireManagement;
+
 const BestDrivers = (props: Props) => {
-  const { bestDrivers } = props;
+  const { bestDrivers, driverWeights } = props;
 
   const { t } = useTranslation(['calculators']);
 
@@ -25,6 +37,12 @@ const BestDrivers = (props: Props) => {
         <BestAssetCard asset={bestDrivers.driver1.asset}>
           <Hr />
 
+          {driverWeights && (
+            <div className='mb-3 text-xs text-gray-600 dark:text-gray-400'>
+              Meta score: {calculateDriverMetaScore(bestDrivers.driver1.stat, driverWeights)}
+            </div>
+          )}
+
           <DriverStats stat={bestDrivers.driver1.stat} />
         </BestAssetCard>
       </div>
@@ -34,6 +52,12 @@ const BestDrivers = (props: Props) => {
 
         <BestAssetCard asset={bestDrivers.driver2.asset}>
           <Hr />
+
+          {driverWeights && (
+            <div className='mb-3 text-xs text-gray-600 dark:text-gray-400'>
+              Meta score: {calculateDriverMetaScore(bestDrivers.driver2.stat, driverWeights)}
+            </div>
+          )}
 
           <DriverStats stat={bestDrivers.driver2.stat} />
         </BestAssetCard>

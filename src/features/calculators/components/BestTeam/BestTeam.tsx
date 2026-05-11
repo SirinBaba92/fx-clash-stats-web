@@ -247,7 +247,7 @@ const BestTeam = () => {
         <TeamScore score={score} />
       </div>
 
-      <BestDrivers bestDrivers={bestDrivers} />
+      <BestDrivers   bestDrivers={bestDrivers}   driverWeights={seriesWeights.drivers} />
 
       <TeamPartsStats bestParts={bestParts} />
 

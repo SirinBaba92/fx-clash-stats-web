@@ -4,16 +4,30 @@ import { PartStats } from '@/features/parts';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import BestPartsGrid from './BestPartsGrid';
+
 import type { BestParts as BestPartsType } from '../../types';
+import type { PartWeights } from '../../config/seriesWeights';
 
 interface Props {
   bestParts: BestPartsType;
+  partWeights?: PartWeights;
 }
+
+const calculatePartMetaScore = (
+  stat: BestPartsType['bestBrake']['stat'],
+  partWeights: PartWeights,
+) =>
+  stat.speed * partWeights.speed +
+  stat.cornering * partWeights.cornering +
+  stat.powerUnit * partWeights.powerUnit +
+  stat.qualifying * partWeights.qualifying;
 
 const BestParts = (props: Props) => {
   const {
     bestParts: { bestBrake, bestEngine, bestFrontWing, bestGearbox, bestRearWing, bestSuspension },
+    partWeights,
   } = props;
+
   const { t } = useTranslation(['parts']);
 
   const parts = useMemo(
@@ -57,6 +71,12 @@ const BestParts = (props: Props) => {
 
           <BestAssetCard asset={part.data.asset}>
             <Hr />
+
+            {partWeights && (
+              <div className='mb-3 text-xs text-gray-600 dark:text-gray-400'>
+                Meta score: {calculatePartMetaScore(part.data.stat, partWeights)}
+              </div>
+            )}
 
             <PartStats stat={part.data.stat} />
           </BestAssetCard>

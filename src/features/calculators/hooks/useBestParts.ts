@@ -1,4 +1,12 @@
-import { useBrakes, useEngines, useFrontWings, useGearboxes, useRearWings, useSuspensions } from '@/features/parts';
+import {
+  useBatteries,
+  useBrakes,
+  useEngines,
+  useFrontWings,
+  useGearboxes,
+  useRearWings,
+  useSuspensions,
+} from '@/features/parts';
 import useBestPart from './useBestPart';
 import useBestPartsStatsSum from './useBestPartsStatsSum';
 import type { BestParts } from '../types';
@@ -23,6 +31,9 @@ const useBestParts = (partWeights?: PartWeights): BestParts => {
   const suspensions = useSuspensions();
   const bestSuspension = useBestPart(suspensions, 'suspensions', partWeights);
 
+  const batteries = useBatteries();
+  const bestBattery = useBestPart(batteries, 'batteries', partWeights);
+
   const sum = useBestPartsStatsSum({
     bestBrake,
     bestEngine,
@@ -30,6 +41,7 @@ const useBestParts = (partWeights?: PartWeights): BestParts => {
     bestGearbox,
     bestRearWing,
     bestSuspension,
+    bestBattery,
   });
 
   return {
@@ -39,6 +51,7 @@ const useBestParts = (partWeights?: PartWeights): BestParts => {
     bestGearbox,
     bestRearWing,
     bestSuspension,
+    bestBattery,
     sum,
   };
 };

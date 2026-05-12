@@ -7,6 +7,7 @@ export { default as useFrontWings } from './hooks/useFrontWings';
 export { default as useGearboxes } from './hooks/useGearboxes';
 export { default as useRearWings } from './hooks/useRearWings';
 export { default as useSuspensions } from './hooks/useSuspensions';
+export { default as useBatteries } from './hooks/useBatteries';
 
 export * from './routes';
 

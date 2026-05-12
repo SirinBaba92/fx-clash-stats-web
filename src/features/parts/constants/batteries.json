@@ -22,5 +22,101 @@
         }
       }
     ]
+  },
+  {
+    "id": 1,
+    "name": "Charge Core",
+    "rarity": "epic",
+    "series": 4,
+    "stats": [
+      {
+        "level": 1,
+        "speed": 10,
+        "cornering": 4,
+        "powerUnit": 4,
+        "qualifying": 3,
+        "pitStopTime": 0.9,
+        "score": {
+          "weighted": 0,
+          "percentageToMax": 0
+        },
+        "upgrade": {
+          "cards": 0,
+          "coins": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Power Grid",
+    "rarity": "common",
+    "series": 7,
+    "stats": [
+      {
+        "level": 1,
+        "speed": 9,
+        "cornering": 14,
+        "powerUnit": 7,
+        "qualifying": 8,
+        "pitStopTime": 0.69,
+        "score": {
+          "weighted": 0,
+          "percentageToMax": 0
+        },
+        "upgrade": {
+          "cards": 0,
+          "coins": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Energy Reserve",
+    "rarity": "rare",
+    "series": 9,
+    "stats": [
+      {
+        "level": 1,
+        "speed": 10,
+        "cornering": 9,
+        "powerUnit": 16,
+        "qualifying": 9,
+        "pitStopTime": 0.76,
+        "score": {
+          "weighted": 0,
+          "percentageToMax": 0
+        },
+        "upgrade": {
+          "cards": 0,
+          "coins": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Spare Pack",
+    "rarity": "rare",
+    "series": 11,
+    "stats": [
+      {
+        "level": 1,
+        "speed": 11,
+        "cornering": 16,
+        "powerUnit": 9,
+        "qualifying": 10,
+        "pitStopTime": 0.69,
+        "score": {
+          "weighted": 0,
+          "percentageToMax": 0
+        },
+        "upgrade": {
+          "cards": 0,
+          "coins": 0
+        }
+      }
+    ]
   }
 ]

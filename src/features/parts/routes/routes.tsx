@@ -7,6 +7,7 @@ const { RearWingsListPage } = lazyImport(() => import('./pages'), 'RearWingsList
 const { FrontWingsListPage } = lazyImport(() => import('./pages'), 'FrontWingsListPage');
 const { SuspensionsListPage } = lazyImport(() => import('./pages'), 'SuspensionsListPage');
 const { EnginesListPage } = lazyImport(() => import('./pages'), 'EnginesListPage');
+const { BatteriesListPage } = lazyImport(() => import('./pages'), 'BatteriesListPage');
 
 const partsRoutes: RouteObject[] = [
   {
@@ -62,6 +63,15 @@ const partsRoutes: RouteObject[] = [
       },
     ],
     path: 'engines',
+  },
+  {
+    children: [
+      {
+        element: <BatteriesListPage />,
+        index: true,
+      },
+    ],
+    path: 'batteries',
   },
 ];
 

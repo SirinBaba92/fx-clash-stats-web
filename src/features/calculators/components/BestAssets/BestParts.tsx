@@ -13,10 +13,7 @@ interface Props {
   partWeights?: PartWeights;
 }
 
-const calculatePartMetaScore = (
-  stat: BestPartsType['bestBrake']['stat'],
-  partWeights: PartWeights,
-) =>
+const calculatePartMetaScore = (stat: BestPartsType['bestBrake']['stat'], partWeights: PartWeights) =>
   stat.speed * partWeights.speed +
   stat.cornering * partWeights.cornering +
   stat.powerUnit * partWeights.powerUnit +
@@ -24,7 +21,7 @@ const calculatePartMetaScore = (
 
 const BestParts = (props: Props) => {
   const {
-    bestParts: { bestBrake, bestEngine, bestFrontWing, bestGearbox, bestRearWing, bestSuspension },
+    bestParts: { bestBattery, bestBrake, bestEngine, bestFrontWing, bestGearbox, bestRearWing, bestSuspension },
     partWeights,
   } = props;
 
@@ -56,8 +53,12 @@ const BestParts = (props: Props) => {
         data: bestEngine,
         label: t('parts:engine', { count: 1 }),
       },
+      {
+        data: bestBattery,
+        label: 'Battery',
+      },
     ],
-    [bestBrake, bestEngine, bestFrontWing, bestGearbox, bestRearWing, bestSuspension, t],
+    [bestBattery, bestBrake, bestEngine, bestFrontWing, bestGearbox, bestRearWing, bestSuspension, t],
   );
 
   return (

@@ -9,6 +9,7 @@ interface PartsCollectedState {
   gearboxes: AssetCollectedData;
   rearWings: AssetCollectedData;
   suspensions: AssetCollectedData;
+  batteries: AssetCollectedData;
 }
 
 export type PartsCollectedKeys = keyof PartsCollectedState;
@@ -28,6 +29,7 @@ export const createPartsCollectedSlice: StateCreator<
       level: 1,
     },
   },
+
   engines: {
     // Starter
     0: {
@@ -35,6 +37,7 @@ export const createPartsCollectedSlice: StateCreator<
       level: 1,
     },
   },
+
   frontWings: {
     // Starter
     0: {
@@ -42,6 +45,7 @@ export const createPartsCollectedSlice: StateCreator<
       level: 1,
     },
   },
+
   gearboxes: {
     // Starter
     0: {
@@ -49,6 +53,7 @@ export const createPartsCollectedSlice: StateCreator<
       level: 1,
     },
   },
+
   rearWings: {
     // Starter
     0: {
@@ -56,7 +61,16 @@ export const createPartsCollectedSlice: StateCreator<
       level: 1,
     },
   },
+
   suspensions: {
+    // Starter
+    0: {
+      cards: 0,
+      level: 1,
+    },
+  },
+
+  batteries: {
     // Starter
     0: {
       cards: 0,

@@ -53,6 +53,10 @@ const Sidebar = (props: Props) => {
         name: t('parts:engine', { count: 2 }),
         path: '/engines',
       },
+      {
+        name: 'Batteries',
+        path: '/batteries',
+      },
     ],
     [t],
   );

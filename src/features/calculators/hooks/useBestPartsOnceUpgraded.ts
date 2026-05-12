@@ -1,4 +1,12 @@
-import { useBrakes, useEngines, useFrontWings, useGearboxes, useRearWings, useSuspensions } from '@/features/parts';
+import {
+  useBatteries,
+  useBrakes,
+  useEngines,
+  useFrontWings,
+  useGearboxes,
+  useRearWings,
+  useSuspensions,
+} from '@/features/parts';
 import useBestPartOnceUpgraded from './useBestPartOnceUpgraded';
 import useBestPartsStatsSum from './useBestPartsStatsSum';
 import type { BestPartOnceUpgradedRequirements, BestParts } from '../types';
@@ -6,9 +14,7 @@ import type { PartWeights } from '../config/seriesWeights';
 
 type BestPartsOnceUpgradedReturn = BestParts & BestPartOnceUpgradedRequirements;
 
-const useBestPartsOnceUpgraded = (
-  partWeights?: PartWeights,
-): BestPartsOnceUpgradedReturn => {
+const useBestPartsOnceUpgraded = (partWeights?: PartWeights): BestPartsOnceUpgradedReturn => {
   const brakes = useBrakes();
   const bestBrake = useBestPartOnceUpgraded(brakes, 'brakes', partWeights);
 
@@ -27,6 +33,9 @@ const useBestPartsOnceUpgraded = (
   const suspensions = useSuspensions();
   const bestSuspension = useBestPartOnceUpgraded(suspensions, 'suspensions', partWeights);
 
+  const batteries = useBatteries();
+  const bestBattery = useBestPartOnceUpgraded(batteries, 'batteries', partWeights);
+
   const sum = useBestPartsStatsSum({
     bestBrake,
     bestEngine,
@@ -34,6 +43,7 @@ const useBestPartsOnceUpgraded = (
     bestGearbox,
     bestRearWing,
     bestSuspension,
+    bestBattery,
   });
 
   const coinsNeeded =
@@ -42,7 +52,8 @@ const useBestPartsOnceUpgraded = (
     (bestFrontWing.upgradeRequirements?.coinsNeeded ?? 0) +
     (bestGearbox.upgradeRequirements?.coinsNeeded ?? 0) +
     (bestRearWing.upgradeRequirements?.coinsNeeded ?? 0) +
-    (bestSuspension.upgradeRequirements?.coinsNeeded ?? 0);
+    (bestSuspension.upgradeRequirements?.coinsNeeded ?? 0) +
+    (bestBattery.upgradeRequirements?.coinsNeeded ?? 0);
 
   return {
     bestBrake,
@@ -51,6 +62,7 @@ const useBestPartsOnceUpgraded = (
     bestGearbox,
     bestRearWing,
     bestSuspension,
+    bestBattery,
     sum,
     upgradeRequirements: {
       coinsNeeded,

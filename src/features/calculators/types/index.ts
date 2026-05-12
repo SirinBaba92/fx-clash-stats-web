@@ -30,6 +30,7 @@ export interface BestParts {
   bestGearbox: BestPart;
   bestRearWing: BestPart;
   bestSuspension: BestPart;
+  bestBattery: BestPart;
   sum: BestPartsSum;
 }
 
